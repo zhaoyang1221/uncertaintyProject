@@ -1,0 +1,23 @@
+#summaryContainer {
+    width: 20%;
+    height: 600px;
+    background-color: #ebebeb;
+    border: thin solid darkgray;
+    border-radius: 5px;
+    float: left;
+
+}
+
+#mainContainer {
+    height: 600px;
+    border: thin solid darkgray;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.title{
+    margin: 4px;
+    font-family: sans-serif;
+    font-size: medium;
+
+}

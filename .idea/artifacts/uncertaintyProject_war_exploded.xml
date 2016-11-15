@@ -6,6 +6,15 @@
         <element id="directory" name="classes">
           <element id="module-output" name="uncertaintyProject" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.github.yannrichet:Rsession:1.8.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.12" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: com.github.yannrichet:JMathArray:1.0" />
+          <element id="library" level="project" name="Maven: gov.nist.math:jama:1.0.3" />
+          <element id="library" level="project" name="Maven: org.rosuda.REngine:REngine:2.1.0" />
+          <element id="library" level="project" name="Maven: org.rosuda.REngine:Rserve:1.8.1" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/uncertainty/META-INF/MANIFEST.MF" />
