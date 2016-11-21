@@ -1,4 +1,4 @@
-package cn.edu.uncertainty;
+package com.xzy.uncertainty;
 
 import org.math.R.Rsession;
 import org.rosuda.REngine.REXPMismatchException;
