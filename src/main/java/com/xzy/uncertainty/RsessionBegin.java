@@ -7,6 +7,7 @@ import org.rosuda.REngine.REXPMismatchException;
 import org.rosuda.REngine.RList;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,8 +18,13 @@ import java.util.Map;
  * @author Administrator on 2016/10/24 0024.
  */
 public class RsessionBegin {
-    public static void main(String args[]) throws REXPMismatchException {
+    public static void main(String args[]) throws REXPMismatchException, IOException {
+//        String classPath = System.getProperty("user.dir");
+//        获取项目路径
+        File directory = new File("");// 参数为空
+        String courseFile = directory.getCanonicalPath();
         Rsession s = Rsession.newInstanceTry(System.out, null);
+
         s.sendFile(new File("D:\\zhaoyang\\Documents\\Workspace\\IdeaProjects\\uncertaintyProject\\src\\main\\resources\\dataset\\Kobe_Bryant.csv"));
         s.eval("Kobe <- read.csv(\"Kobe_Bryant.csv\")");
         s.eval("myvars <- c(\"G\", \"MP\", \"FG\", \"FGA\", \"X3P\", \"X3PA\", \"FT\", \"FTA\", \"ORB\", \"DRB\", \"AST\", \"STL\", \"BLK\", \"TOV\", \"PF\", \"PTS\")");

@@ -9,6 +9,7 @@ import org.rosuda.REngine.REXPMismatchException;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,10 @@ import static org.math.R.Rsession.cast;
 public class RServiceImpl implements IRService{
     public Map<String, ArrayList<String>> getDimensionSummary() throws REXPMismatchException {
         Rsession s = Rsession.newInstanceTry(System.out, null);
-        s.sendFile(new File("E:\\visualization\\IdeaProjects\\uncertaintyProject\\src\\main\\resources\\dataset\\Kobe_Bryant.csv"));
+        //获取项目路径
+//        String courseFile = System.getProperty("user.dir");
+
+        s.sendFile(new File("E:\\visualization\\IdeaProjects\\uncertaintyProject\\src\\main\\R\\Kobe_Bryant.csv"));
         s.eval("Kobe <- read.csv(\"Kobe_Bryant.csv\")");
         s.eval("myvars <- c(\"G\", \"MP\", \"FG\", \"FGA\", \"X3P\", \"X3PA\", \"FT\", \"FTA\", \"ORB\", \"DRB\", \"AST\", \"STL\", \"BLK\", \"TOV\", \"PF\", \"PTS\")");
         s.eval("Kobe <- Kobe[myvars]");

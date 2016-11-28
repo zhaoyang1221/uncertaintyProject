@@ -14,11 +14,20 @@
 <body>
 <div id="summaryContainer">
     <h3 class="title">Dimension Summary</h3>
-    <div id="dimensionSummary"></div>
+    <div id="dimensionSummaryDisplay"></div>
 </div>
 <div id="mainContainer">
     <button id="dataInputButton" type="button">导入数据</button>
 </div>
-<script data-main="js/main.js" src="./bower_components/requirejs/require.js"></script>
+<script id="dimensionSummaryTemplate" type="text/x-handlebars-template">
+    <ul>
+        <p>哈哈哈哈</p>
+        {{#each dimensionSummary}}
+            Key: {{@key}} Value = {{this}}
+        <li>人</li>
+        {{/each}}
+    </ul>
+</script>
+<script language="JavaScript" data-main="./js/main.js" src="./bower_components/requirejs/require.js"></script>
 </body>
 </html>
