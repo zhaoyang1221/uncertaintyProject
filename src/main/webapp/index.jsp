@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>uncertainty</title>
+    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
@@ -21,10 +22,8 @@
 </div>
 <script id="dimensionSummaryTemplate" type="text/x-handlebars-template">
     <ul>
-        <p>哈哈哈哈</p>
-        {{#each dimensionSummary}}
-            Key: {{@key}} Value = {{this}}
-        <li>人</li>
+        {{#each this}}
+           <li>{{@key}}:{{@index}}<i class="fa fa-info-circle" aria-hidden="true" ></i></li>
         {{/each}}
     </ul>
 </script>
