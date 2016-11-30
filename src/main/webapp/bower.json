@@ -1,0 +1,26 @@
+{
+  "name": "webapp",
+  "homepage": "https://github.com/zhaoyang1221/uncertaintyProject",
+  "authors": [
+    "zhaoyang1221 <164258541@qq.com>"
+  ],
+  "description": "uncertainty webapp",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "^4.3.0",
+    "font-awesome": "^4.7.0",
+    "handlebars": "^4.0.5",
+    "jquery": "^3.1.1",
+    "tooltipster": "^4.1.6",
+    "requirejs": "^2.3.2"
+  }
+}

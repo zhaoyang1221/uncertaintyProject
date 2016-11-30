@@ -9,21 +9,29 @@
 <head>
     <meta charset="UTF-8">
     <title>uncertainty</title>
+    <link rel="stylesheet" href="./bower_components/tooltipster/dist/css/tooltipster.bundle.min.css">
+    <link rel="stylesheet"
+          href="./bower_components/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css">
     <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
 <div id="summaryContainer">
     <h3 class="title">Dimension Summary</h3>
+    <button id="dataInputButton" type="button">导入数据</button>
     <div id="dimensionSummaryDisplay"></div>
 </div>
-<div id="mainContainer">
-    <button id="dataInputButton" type="button">导入数据</button>
-</div>
+<div id="mainContainer"></div>
 <script id="dimensionSummaryTemplate" type="text/x-handlebars-template">
+    {{#each this}}
+    <div class="dimensionInfo"><span>{{@key}}</span><i class="fa fa-info-circle" aria-hidden="true" title="{{toJson this}}"></i></div>
+    {{/each}}
+</script>
+<script id="tooltipsterTemplate" type="text/x-handlebars-template">
+    <h3>Summary</h3>
     <ul>
         {{#each this}}
-           <li>{{@key}}:{{@index}}<i class="fa fa-info-circle" aria-hidden="true" ></i></li>
+        <li>{{this}}</li>
         {{/each}}
     </ul>
 </script>
