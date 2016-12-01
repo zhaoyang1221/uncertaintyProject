@@ -16,15 +16,17 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-<div id="summaryContainer">
+<div id="summaryContainer" class="containerBorder">
     <h3 class="title">Dimension Summary</h3>
     <button id="dataInputButton" type="button">导入数据</button>
     <div id="dimensionSummaryDisplay"></div>
 </div>
-<div id="mainContainer"></div>
+<div id="mainContainer" class="containerBorder"></div>
+<div id="parallelContainer" class="containerBorder"></div>
 <script id="dimensionSummaryTemplate" type="text/x-handlebars-template">
     {{#each this}}
-    <div class="dimensionInfo"><span>{{@key}}</span><i class="fa fa-info-circle" aria-hidden="true" title="{{toJson this}}"></i></div>
+    <div class="dimensionInfo"><span>{{@key}}</span><i class="fa fa-info-circle" aria-hidden="true"
+                                                       title="{{toJson this}}"></i></div>
     {{/each}}
 </script>
 <script id="tooltipsterTemplate" type="text/x-handlebars-template">

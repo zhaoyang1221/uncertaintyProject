@@ -12,4 +12,5 @@ import java.util.Map;
 
 public interface IRService {
     Map getDimensionSummary() throws REXPMismatchException;
+
 }
