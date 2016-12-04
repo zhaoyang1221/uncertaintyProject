@@ -16,8 +16,6 @@ require(['d3','jquery','handlebars', 'tooltipster'], function (d3, $, Handlebars
             var html = template(data);
             $("#dimensionSummaryDisplay").html(html);
 
-            parallelVis();
-
             $(".fa-info-circle").tooltipster({
                 side: 'right',
                 theme: 'tooltipster-shadow',
@@ -34,22 +32,28 @@ require(['d3','jquery','handlebars', 'tooltipster'], function (d3, $, Handlebars
                 contentAsHTML: true
             });
 
+            parallelVis();
+
         })
     });
 
     function parallelVis() {
-        console.log('hello');
-
         var traits = ["G","MP","FG","FGA","X3P","X3PA","FT","FTA","ORB","DRB","AST","STL","BLK","TOV","PF","PTS"];
-        var w = $("#parallelContainer").width,
-            h = $("#parallelContainer").height;
-        var y = {};
-        var line = d3.svg.line(),
-            axis = d3.svg.axis().orient("left");
-        var svg = d3.select("#parallelContainer").append("svg:svg")
-            .attr("width", w)
-            .attr("height", h)
-            .append("svg:g")
+        var margin = {top:30, right: 10, bottom: 10, left:10},
+            width = $("#parallelContainer").width() - margin.left - margin.right,
+            height = $("#parallelContainer").height() - margin.top - margin.bottom;
+        console.log(width);
+        console.log(height);
+
+        var x = d3.scaleOrdinal().range([0, width], 1),
+            y = {},
+            dragging = {};
+
+        var svg = d3.select("#parallelContainer").append("svg")
+            .attr("width", width +　margin.left +　margin.right)
+            .attr("height", height + margin.top +　margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     }
 
