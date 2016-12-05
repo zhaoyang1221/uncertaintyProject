@@ -14,6 +14,7 @@
           href="./bower_components/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css">
     <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/parallelVis.css">
 </head>
 <body>
 <div id="summaryContainer" class="containerBorder">
