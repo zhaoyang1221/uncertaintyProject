@@ -20,6 +20,10 @@
 <div id="summaryContainer" class="containerBorder">
     <h3 class="title">Dimension Summary</h3>
     <button id="dataInputButton" type="button">导入数据</button>
+    <form name="fileUploadForm" action="/uncertainty/fileService/fileUpload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="上传" >
+    </form>
     <div id="dimensionSummaryDisplay"></div>
 </div>
 <div id="mainContainer" class="containerBorder"></div>
