@@ -20,9 +20,20 @@ public class FileServiceImpl implements IFileService {
     //  文件上传目录（这里设置为程序运行目录）
 //    private String fileUploadDirectory = System.getProperty("user.dir");
 
-    public String fileUpload(HttpServletRequest request) throws IllegalStateException, IOException {
-        String fileUploadDirectory = request.getSession().getServletContext().getRealPath("/upload");
-//      将当前上下文初始化给 CommonsMutipartResolver (多部分解释器）
+    public String fileUpload(HttpServletRequest request, String local_path) throws IllegalStateException, IOException {
+        File uploadDirectory = new File(local_path);
+        if (!uploadDirectory.exists() && !uploadDirectory.isDirectory()) {
+            System.out.println("上传目录不存在");
+            if (uploadDirectory.mkdir()) {
+                System.out.println("上传目录创建成功");
+            } else {
+                System.out.println("上传目录创建失败");
+            }
+        } else {
+            System.out.println("上传目录已存在");
+        }
+
+//      将当前上下文初始化给 CommonsMultipartResolver (多部分解释器）
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
 //        检查form中是否有enctype="multipart/form-data"
         if (multipartResolver.isMultipart(request)) {
@@ -35,7 +46,9 @@ public class FileServiceImpl implements IFileService {
 //              一次遍历所有文件
                 MultipartFile file = multipartHttpServletRequest.getFile(iterator.next().toString());
                 if (file != null) {
-                    String path = fileUploadDirectory + File.separator + file.getOriginalFilename();
+                    String path = local_path + File.separator + file.getOriginalFilename();
+//                  将文件名保存到session中
+                    request.getSession().setAttribute("fileName", file.getOriginalFilename());
 //                  上传
                     file.transferTo(new File(path));
                 }

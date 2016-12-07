@@ -41,10 +41,10 @@ require(['d3', 'jquery', 'handlebars', 'tooltipster'], function (d3, $, Handleba
      * 绘制平行坐标图（parallel coordinates)
      */
     function parallelVis() {
-        var traits = ["G", "MP", "FG", "FGA", "X3P", "X3PA", "FT", "FTA", "ORB", "DRB", "AST", "STL", "BLK", "TOV", "PF", "PTS"];
+        var container = $("#parallelContainer");
         var margin = {top: 30, right: 10, bottom: 10, left: 10},
-            width = $("#parallelContainer").width() - margin.left - margin.right,
-            height = $("#parallelContainer").height() - margin.top - margin.bottom;
+            width = container.width() - margin.left - margin.right,
+            height = container.height() - margin.top - margin.bottom;
         console.log(width);
         console.log(height);
 
@@ -63,7 +63,8 @@ require(['d3', 'jquery', 'handlebars', 'tooltipster'], function (d3, $, Handleba
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        d3.csv("cars.csv", function (error, cars) {
+        d3.csv("/uncertainty/upload/cars.csv", function (error, cars) {
+            console.log(cars);
             // Extract the list of dimensions and create a scale for each.
             x.domain(dimensions = d3.keys(cars[0]).filter(function (d) {
                 return d != "name" && (y[d] = d3.scale.linear()

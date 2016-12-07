@@ -12,6 +12,6 @@ import java.util.Map;
  */
 
 public interface IRService {
-    Map getDimensionSummary() throws REXPMismatchException;
+    Map getDimensionSummary(String local_path, String fileName) throws REXPMismatchException;
 
 }
