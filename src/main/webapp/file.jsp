@@ -14,16 +14,12 @@
 
 </head>
 <body>
-    <%--<form:form method="POST" commandName="File"	enctype="multipart/form-data">--%>
+<form:form method="POST" commandName="file"	enctype="multipart/form-data">
 
-        <%--Upload your file please:--%>
-        <%--<input type="file" name="file" />--%>
-        <%--<input type="submit" value="upload" />--%>
-        <%--<form:errors path="file" cssStyle="color: #ff0000;" />--%>
-    <%--</form:form>--%>
-
+    Upload your file please:
+    <input type="file" name="file" />
+    <input type="submit" value="upload" />
+    <form:errors path="file" cssStyle="color: #ff0000;" cssClass="error" element="div"/>
+</form:form>
 </body>
-<script>
-    window.location.href = '/uncertainty/fileupload';
-</script>
 </html>

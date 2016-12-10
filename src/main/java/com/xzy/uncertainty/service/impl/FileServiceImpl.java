@@ -20,18 +20,9 @@ public class FileServiceImpl implements IFileService {
     //  文件上传目录（这里设置为程序运行目录）
 //    private String fileUploadDirectory = System.getProperty("user.dir");
 
-    public String fileUpload(HttpServletRequest request, String local_path) throws IllegalStateException, IOException {
-        File uploadDirectory = new File(local_path);
-        if (!uploadDirectory.exists() && !uploadDirectory.isDirectory()) {
-            System.out.println("上传目录不存在");
-            if (uploadDirectory.mkdir()) {
-                System.out.println("上传目录创建成功");
-            } else {
-                System.out.println("上传目录创建失败");
-            }
-        } else {
-            System.out.println("上传目录已存在");
-        }
+    public boolean fileUpload(HttpServletRequest request, String local_path) throws IllegalStateException, IOException {
+
+        createUploadDirectory(local_path);
 
 //      将当前上下文初始化给 CommonsMultipartResolver (多部分解释器）
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
@@ -46,7 +37,7 @@ public class FileServiceImpl implements IFileService {
 //              一次遍历所有文件
                 MultipartFile file = multipartHttpServletRequest.getFile(iterator.next().toString());
                 if (file != null) {
-                    String path = local_path + File.separator + file.getOriginalFilename();
+                    String path = local_path + "/" + file.getOriginalFilename();
 //                  将文件名保存到session中
                     request.getSession().setAttribute("fileName", file.getOriginalFilename());
 //                  上传
@@ -55,6 +46,39 @@ public class FileServiceImpl implements IFileService {
 
             }
         }
-        return "success";
+
+        return true;
     }
+
+    public boolean fileUpload(HttpServletRequest request, String local_path, MultipartFile file) throws IOException {
+
+        createUploadDirectory(local_path);
+
+        String path = local_path + "/" + file.getOriginalFilename();
+//      将文件名保存到session中
+        request.getSession().setAttribute("fileName", file.getOriginalFilename());
+//      上传
+        file.transferTo(new File(path));
+
+        return true;
+    }
+
+    /**
+     * 创建上传目录
+     * @param local_path 上传路径
+     */
+    public void createUploadDirectory(String local_path) {
+        File uploadDirectory = new File(local_path);
+        if (!uploadDirectory.exists() && !uploadDirectory.isDirectory()) {
+            System.out.println("上传目录不存在");
+            if (uploadDirectory.mkdir()) {
+                System.out.println("上传目录创建成功");
+            } else {
+                System.out.println("上传目录创建失败");
+            }
+        } else {
+            System.out.println("上传目录已存在");
+        }
+    }
+
 }
