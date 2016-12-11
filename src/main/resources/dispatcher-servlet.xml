@@ -47,7 +47,7 @@
     </bean>
     <!-- 定义跳转的文件的前后缀 ，视图模式配置-->
     <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/><!--设置JSP文件的目录位置-->
+        <property name="prefix" value="/WEB-INF/view/"/><!--设置JSP文件的目录位置-->
         <property name="suffix" value=".jsp"/>
     </bean>
 

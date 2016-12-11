@@ -67,7 +67,7 @@ public class FileServiceImpl implements IFileService {
      * 创建上传目录
      * @param local_path 上传路径
      */
-    public void createUploadDirectory(String local_path) {
+    private void createUploadDirectory(String local_path) {
         File uploadDirectory = new File(local_path);
         if (!uploadDirectory.exists() && !uploadDirectory.isDirectory()) {
             System.out.println("上传目录不存在");

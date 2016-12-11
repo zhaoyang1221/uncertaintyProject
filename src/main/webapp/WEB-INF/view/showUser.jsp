@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    <img src="../images/images.jpeg" />
+    <img src="./images/images.jpeg" />
 </body>
 </html>
